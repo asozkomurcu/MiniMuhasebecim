@@ -1,0 +1,79 @@
+﻿@model CreateIncomeVM
+
+
+<style>
+    #incomeCreate {
+        display: block;
+        width: auto;
+        height: auto;
+        margin: 0 auto;
+    }
+
+
+    @@media only screen and (min-width:992px)) {
+        #incomeCreate {
+            margin-left: 35%;
+            margin-right: 20%;
+        }
+    }
+
+    @@media only screen and (min-width:741px) and (max-width:991px) {
+        #incomeCreate {
+            margin-left: 30%;
+            margin-right: 20%;
+        }
+    }
+
+    @@media only screen and (min-width:525px) and (max-width:740px) {
+        #incomeCreate {
+            width: 60%;
+            margin-left: 20%;
+            margin-right: 20%;
+        }
+    }
+
+    @@media only screen and (max-width:524px) {
+        #incomeCreate {
+            width: 70%;
+            margin-left: 15%;
+            margin-right: 15%;
+        }
+    }
+
+</style>
+
+<div class="row" id="incomeCreate">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Date" class="control-label"></label>
+                <input asp-for="Date" class="form-control" />
+                <span asp-validation-for="Date" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Cash" class="control-label"></label>
+                <input asp-for="Cash" class="form-control" />
+                <span asp-validation-for="Cash" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="CreditCard1" class="control-label"></label>
+                <input asp-for="CreditCard1" class="form-control" />
+                <span asp-validation-for="CreditCard1" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="CreditCard2" class="control-label"></label>
+                <input asp-for="CreditCard2" class="form-control" />
+                <span asp-validation-for="CreditCard2" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+

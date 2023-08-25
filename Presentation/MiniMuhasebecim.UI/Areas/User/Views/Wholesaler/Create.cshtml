@@ -1,0 +1,59 @@
+﻿@model CreateWholesalerVM
+
+
+
+<style>
+    #WholesalerCreate {
+        display: block;
+        width: auto;
+        height: auto;
+        margin: 0 auto;
+    }
+
+
+    @@media only screen and (min-width:992px)) {
+        #WholesalerCreate {
+            margin-left: 35%;
+        }
+    }
+
+    @@media only screen and (min-width:741px) and (max-width:991px) {
+        #WholesalerCreate {
+            margin-left: 30%;
+            margin-right: 20%;
+        }
+    }
+
+    @@media only screen and (min-width:525px) and (max-width:740px) {
+        #WholesalerCreate {
+            margin-left: 20%;
+            margin-right: 20%;
+        }
+    }
+
+    @@media only screen and (max-width:524px) {
+        #WholesalerCreate {
+            width: 70%;
+            margin-left: 15%;
+            margin-right: 15%;
+        }
+    }
+
+</style>
+
+<div class="row" id="WholesalerCreate">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="WholesalerName" class="control-label"></label>
+                <input asp-for="WholesalerName" class="form-control" />
+                <span asp-validation-for="WholesalerName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+

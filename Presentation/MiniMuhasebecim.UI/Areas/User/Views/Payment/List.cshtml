@@ -1,0 +1,92 @@
+﻿@model IEnumerable<PaymentDto>
+
+
+
+<style>
+    #paymentList {
+        display: block;
+        width: auto;
+        height: auto;
+        margin: 0 auto;
+    }
+
+
+    @@media only screen and (min-width:992px)) {
+        #paymentList {
+            margin-left: 35%;
+            margin-right: 20%;
+        }
+    }
+
+    @@media only screen and (min-width:741px) and (max-width:991px) {
+        #paymentList {
+            margin-left: 30%;
+            margin-right: 20%;
+        }
+    }
+
+    @@media only screen and (min-width:525px) and (max-width:740px) {
+        #paymentList {
+            width: 60%;
+            margin-left: 20%;
+            margin-right: 20%;
+        }
+    }
+
+    @@media only screen and (max-width:524px) {
+        #paymentList {
+            margin-right: 15%;
+        }
+    }
+
+</style>
+
+<div id="paymentList">
+    <table class="table">
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.Id)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.WholesalerId)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.OrderPayment)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.TotalPayment)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.PaymentType)
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Id)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.WholesalerId)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.OrderPayment)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.TotalPayment)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.PaymentType)
+                    </td>
+                    <td>
+                        @Html.ActionLink("Güncelle", "Edit","Payment", new { Area="User", id=item.Id }, new{@class="btn btn-success"})
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

@@ -1,0 +1,97 @@
+﻿@model LoginVM
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>OTURUM AÇ</title>
+
+    <!-- Google Font: Source Sans Pro -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="~/admin/plugins/fontawesome-free/css/all.min.css">
+    <!-- icheck bootstrap -->
+    <link rel="stylesheet" href="~/admin/plugins/icheck-bootstrap/icheck-bootstrap.min.css">
+    <!-- Theme style -->
+    <link rel="stylesheet" href="~/admin/dist/css/adminlte.min.css">
+</head>
+<body class="hold-transition login-page">
+    <div class="login-box">
+
+        <div class="card card-outline card-primary">
+            <div class="card-header text-center">
+                <p class="h1"><b>MİNİ</b>MUHASEBE</p>
+            </div>
+            <div class="card-body">
+                <p class="login-box-msg">Uygulamayı kullanabilmek için giriş yapınız</p>
+                @{
+                    if (TempData["error"] != null)
+                    {
+                        <div class="alert alert-danger" role="alert">
+                            @TempData["error"]
+                        </div>
+                    }
+                }
+                <form asp-action="SignIn" asp-area="Entry" asp-controller="Login" method="post">
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    <div class="input-group mb-1">
+                        <input asp-for="UserName" type="text" class="form-control" placeholder="Kullanıcı adınız" value="user1">
+                        <div class="input-group-append">
+                            <div class="input-group-text">
+                                <span class="fas fa-user"></span>
+                            </div>
+                        </div>
+                    </div>
+                    <span asp-validation-for="UserName" class="text-danger"></span>
+                    <div class="input-group mb-2 mt-2">
+                        <input asp-for="Password" type="password" class="form-control" placeholder="Şifre" value="12345">
+                        <div class="input-group-append">
+                            <div class="input-group-text">
+                                <span class="fas fa-lock"></span>
+                            </div>
+                        </div>
+                    </div>
+                    <span asp-validation-for="Password" class="text-danger"></span>
+                    <div class="row">
+                        <div class="col-8">
+                            <div class="icheck-primary">
+                                <input type="checkbox" id="remember">
+                                <label for="remember">
+                                    Beni Hatırla
+                                </label>
+                            </div>
+                        </div>
+
+                        <div class="col-4">
+                            <a href="@Url.Action("Login","Register")" class="btn btn-block btn-primary">
+                                Kayıt Ol
+                            </a>
+                        </div>
+
+                    </div>
+
+                    <div class="social-auth-links text-center mt-2 mb-3">
+                        <button type="submit" class="btn btn-primary btn-block">Giriş Yap</button>
+
+                    </div>
+                </form>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <script src="~admin/plugins/jquery/jquery.min.js"></script>
+
+    <script src="~admin/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+    <script src="~admin/dist/js/adminlte.min.js?v=3.2.0"></script>
+</body>
+</html>

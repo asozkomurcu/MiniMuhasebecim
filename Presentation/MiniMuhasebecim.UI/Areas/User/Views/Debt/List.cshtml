@@ -1,0 +1,93 @@
+﻿@model IEnumerable<DebtDto>
+
+
+<style>
+    #debtList {
+        display: block;
+        width: auto;
+        height: auto;
+        margin: 0 auto;
+    }
+
+
+    @@media only screen and (min-width:992px)) {
+        #debtList {
+            margin-left: 35%;
+            margin-right: 20%;
+        }
+    }
+
+    @@media only screen and (min-width:741px) and (max-width:991px) {
+        #debtList {
+            width: 50%;
+            margin-left: 30%;
+            margin-right: 20%;
+        }
+    }
+
+    @@media only screen and (min-width:525px) and (max-width:740px) {
+        #debtList {
+            width: 60%;
+            margin-left: 20%;
+            margin-right: 20%;
+        }
+    }
+
+    @@media only screen and (max-width:524px) {
+        #debtList {
+            width: auto;
+            margin-left: auto;
+            margin-right: auto
+        }
+    }
+
+</style>
+
+<div id="debtList">
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Id)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.WholesalerId)
+            </th>
+            <td>
+                @Html.DisplayNameFor(model => model.Wholesaler.WholesalerName)
+            </td>
+            <th>
+                @Html.DisplayNameFor(model => model.OrderDebt)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TotalDebt)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Id)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.WholesalerId)
+            </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Wholesaler.WholesalerName)
+                </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.OrderDebt)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TotalDebt)
+            </td>
+            <td>
+                    @Html.ActionLink("Güncelle", "Edit","Debt", new { Area="User", id=item.Id }, new{@class="btn btn-success"})
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
+</div>

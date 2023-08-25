@@ -1,0 +1,70 @@
+﻿@model CreateOrderVM
+
+<style>
+    #orderCreate {
+        display: block;
+        width: auto;
+        height: auto;
+        margin: 0 auto;
+    }
+
+
+    @@media only screen and (min-width:992px)) {
+        #orderCreate {
+            margin-left: 35%;
+            margin-right: 20%;
+        }
+    }
+
+    @@media only screen and (min-width:741px) and (max-width:991px) {
+        #orderCreate {
+            margin-left: 30%;
+            margin-right: 20%;
+        }
+    }
+
+    @@media only screen and (min-width:525px) and (max-width:740px) {
+        #orderCreate {
+            width: 60%;
+            margin-left: 20%;
+            margin-right: 20%;
+        }
+    }
+
+    @@media only screen and (max-width:524px) {
+        #orderCreate {
+            width: 70%;
+            margin-left: 15%;
+            margin-right: 15%;
+        }
+    }
+
+</style>
+
+
+<div class="row" id="orderCreate">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="WholesalerId" class="control-label"></label>
+                @Html.DropDownListFor(x=>x.WholesalerId, (IEnumerable<SelectListItem>)ViewBag.Wholesalers,"Tedarikçi",new{@class="form-control"})
+                <span asp-validation-for="WholesalerId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="OrderPrice" class="control-label"></label>
+                <input asp-for="OrderPrice" class="form-control" />
+                <span asp-validation-for="OrderPrice" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="TotalOrderPrice" class="control-label"></label>
+                <input asp-for="TotalOrderPrice" class="form-control" />
+                <span asp-validation-for="TotalOrderPrice" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+

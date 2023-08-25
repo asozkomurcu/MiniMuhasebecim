@@ -1,0 +1,110 @@
+﻿@model IEnumerable<WholesalerDto>
+
+
+
+<style>
+    #WholesalerList {
+        display: block;
+        width: auto;
+        height: auto;
+        margin: 0 auto;
+    }
+
+
+    @@media only screen and (min-width:992px)) {
+        #Wholesaler {
+            margin-left: 35%;
+
+        }
+    }
+
+    @@media only screen and (min-width:741px) and (max-width:991px) {
+        #Wholesaler {
+            margin-left: 30%;
+            margin-right: 20%;
+        }
+    }
+
+    @@media only screen and (min-width:525px) and (max-width:740px) {
+        #Wholesaler {
+            margin-left: 20%;
+            margin-right: 20%;
+        }
+    }
+
+    @@media only screen and (max-width:524px) {
+        #Wholesaler {
+            width: 70%;
+            margin-left: 15%;
+            margin-right: 15%;
+        }
+    }
+
+</style>
+
+<div id="Wholesaler">
+    
+    <table class="table" 
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.Id)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.WholesalerName)
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Id)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.WholesalerName)
+                    </td>
+                    <td>
+                        @Html.ActionLink("Güncelle", "Edit","Wholesaler", new { Area="User", id=item.Id }, new{@class="btn btn-success"}) |
+                            <a href="#" data-id="@item.Id" class="btn btn-danger btnDelete" style="width:90px;">Sil</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+
+@section Scripts{
+    <script>
+
+        $().ready(function () {
+            $(".btnDelete").click(function () {
+                var id = $(this).attr('data-id')
+                console.log(id)
+                $.ajax({
+                    type: "DELETE",
+                    url: "/user/wholesaler/delete/" + id,
+                    dataType: "json",
+                    contentType: "application/json;charset=utf-8",
+                    success: function (response) {
+                        console.log(response)
+                        if (response.success) {
+                            var tdClassName = "tr-" + id
+                            $("." + tdClassName).fadeOut('slow', function () {
+                                $(this).remove()
+                            })
+                        } else {
+                            alert(response.errors[0])
+                        }
+                    },
+                    error: function (response) {
+                        alert('İstek esnasında sonucu taraflı bir hata oluştu.')
+                    }
+                })
+            })
+        })
+
+    </script>
+}

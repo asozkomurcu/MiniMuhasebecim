@@ -1,0 +1,135 @@
+﻿@model IEnumerable<CustomerImageDto>
+
+@inject IHttpContextAccessor _contextAccessor
+@inject IConfiguration _configuration
+
+<style>
+    #customer {
+        display: block;
+        width: 45%;
+        height: auto;
+        margin: 0 auto;
+    }
+
+
+    @@media only screen and (min-width:992px)) {
+        #customer {
+            margin-left: 35%;
+            margin-right: 20%;
+        }
+    }
+
+    @@media only screen and (min-width:741px) and (max-width:991px) {
+        #customer {
+            width: 50%;
+            margin-left: 30%;
+            margin-right: 20%;
+        }
+    }
+
+    @@media only screen and (min-width:525px) and (max-width:740px) {
+        #customer {
+            width: 60%;
+            margin-left: 20%;
+            margin-right: 20%;
+        }
+    }
+
+    @@media only screen and (max-width:524px) {
+        #customer {
+            width: 70%;
+            margin-left: 15%;
+            margin-right: 15%;
+        }
+    }
+
+</style>
+
+<div class="container">
+    <div class="row">
+        @Html.ActionLink("Resim Ekle", "Create","CustomerImage", new { Area="User", customerId= _contextAccessor.HttpContext.Request.Query["customerId"]}, 
+        new{@class="offset-8 col-4 btn btn-success mb-5"})
+    </div>
+</div>
+
+@{
+    if (Model!=null && Model.Any())
+    {
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Id)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.CustomerId)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Path)
+                    </th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr class="tr-@item.Id">
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Id)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.CustomerId)
+                        </td>
+                        <td>
+                            <img src="@_configuration["Api:Url"]@item.Path" width="60" height="60">
+                        </td>
+                        <td>
+                            <a href="#" data-id="@item.Id" class="btn btn-danger btnDelete">Sil</a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    }
+    else
+    {
+        <div class="alert alert-warning" role="alert">
+            Şu an için görüntülenecek resim bulunamadı.
+        </div>
+    }
+}
+
+
+@section Scripts{
+<script>
+
+    $().ready(function(){
+        $(".btnDelete").click(function(){
+            var id=$(this).attr('data-id')
+            console.log(id)
+            $.ajax({
+                type:"DELETE",
+                url:"/user/customerImage/delete/"+id,
+                dataType:"json",
+                contentType:"application/json;charset=utf-8",
+                success:function(response){
+                    console.log(response)
+                    if(response.success){
+                        var tdClassName="tr-"+id
+                        $("."+tdClassName).fadeOut('slow',function(){
+                            $(this).remove()
+                        })
+                    }else{
+                        alert(response.errors[0])
+                    }
+                },
+                error:function(response){
+                    alert('İstek esnasından sonucu taraflı bir hata oluştu.')
+                }
+            })
+        })
+    })
+
+</script>
+}
+

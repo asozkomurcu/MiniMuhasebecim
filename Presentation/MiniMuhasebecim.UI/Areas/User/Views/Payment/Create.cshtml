@@ -1,0 +1,360 @@
+﻿@model CreatePaymentVM
+
+<style>
+    #paymentCreate {
+        display: block;
+        width: auto;
+        height: auto;
+        margin: 0 auto;
+    }
+
+
+    @@media only screen and (min-width:992px)) {
+        #paymentCreate {
+            margin-right: 20%;
+        }
+    }
+
+    @@media only screen and (min-width:741px) and (max-width:991px) {
+        #paymentCreate {
+            margin-left: 30%;
+            margin-right: 20%;
+        }
+    }
+
+    @@media only screen and (min-width:525px) and (max-width:740px) {
+        #paymentCreate {
+            width: 60%;
+            margin-left: 30%;
+            margin-right: 10%;
+        }
+    }
+
+    @@media only screen and (max-width:524px) {
+        #paymentCreate {
+            width: 70%;
+            margin-left: 15%;
+            margin-right: 15%;
+        }
+    }
+
+</style>
+
+@*<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            @*<div class="form-group">
+                <label asp-for="WholesalerId" class="control-label"></label>
+                <input asp-for="WholesalerId" class="form-control" />
+                <span asp-validation-for="WholesalerId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="WholesalerId" class="control-label"></label>
+                @Html.DropDownListFor(x=>x.WholesalerId, (IEnumerable<SelectListItem>)ViewBag.Payments,"Tedarikçi",new{@class="form-control"})
+                <span asp-validation-for="WholesalerId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="OrderPayment" class="control-label"></label>
+                <input asp-for="OrderPayment" class="form-control" />
+                <span asp-validation-for="OrderPayment" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="PaymentType" class="control-label"></label>
+                <input asp-for="PaymentType" class="form-control" />
+                <span asp-validation-for="PaymentType" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>*@
+
+
+<!DOCTYPE html>
+<html lang="tr">
+<head id="paymentCreate">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Mini Muhasebe | Ödeme Ekleme</title>
+
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
+
+    <link rel="stylesheet" href="~admin/plugins/fontawesome-free/css/all.min.css">
+
+    <link rel="stylesheet" href="~admin/plugins/daterangepicker/daterangepicker.css">
+
+    <link rel="stylesheet" href="~admin/plugins/icheck-bootstrap/icheck-bootstrap.min.css">
+
+    <link rel="stylesheet" href="~admin/plugins/bootstrap-colorpicker/css/bootstrap-colorpicker.min.css">
+
+    <link rel="stylesheet" href="~admin/plugins/tempusdominus-bootstrap-4/css/tempusdominus-bootstrap-4.min.css">
+
+    <link rel="stylesheet" href="~admin/plugins/select2/css/select2.min.css">
+    <link rel="stylesheet" href="~admin/plugins/select2-bootstrap4-theme/select2-bootstrap4.min.css">
+
+    <link rel="stylesheet" href="~admin/plugins/bootstrap4-duallistbox/bootstrap-duallistbox.min.css">
+
+    <link rel="stylesheet" href="~admin/plugins/bs-stepper/css/bs-stepper.min.css">
+
+    <link rel="stylesheet" href="~admin/plugins/dropzone/min/dropzone.min.css">
+
+    <link rel="stylesheet" href="~admin/dist/css/adminlte.min.css?v=3.2.0">
+    <script nonce="9ba0d159-06bb-4b57-99e0-7347148a9d18">(function (w, d) { !function (j, k, l, m) { j[l] = j[l] || {}; j[l].executed = []; j.zaraz = { deferred: [], listeners: [] }; j.zaraz.q = []; j.zaraz._f = function (n) { return async function () { var o = Array.prototype.slice.call(arguments); j.zaraz.q.push({ m: n, a: o }) } }; for (const p of ["track", "set", "debug"]) j.zaraz[p] = j.zaraz._f(p); j.zaraz.init = () => { var q = k.getElementsByTagName(m)[0], r = k.createElement(m), s = k.getElementsByTagName("title")[0]; s && (j[l].t = k.getElementsByTagName("title")[0].text); j[l].x = Math.random(); j[l].w = j.screen.width; j[l].h = j.screen.height; j[l].j = j.innerHeight; j[l].e = j.innerWidth; j[l].l = j.location.href; j[l].r = k.referrer; j[l].k = j.screen.colorDepth; j[l].n = k.characterSet; j[l].o = (new Date).getTimezoneOffset(); if (j.dataLayer) for (const w of Object.entries(Object.entries(dataLayer).reduce(((x, y) => ({ ...x[1], ...y[1] })), {}))) zaraz.set(w[0], w[1], { scope: "page" }); j[l].q = []; for (; j.zaraz.q.length;) { const z = j.zaraz.q.shift(); j[l].q.push(z) } r.defer = !0; for (const A of [localStorage, sessionStorage]) Object.keys(A || {}).filter((C => C.startsWith("_zaraz_"))).forEach((B => { try { j[l]["z_" + B.slice(7)] = JSON.parse(A.getItem(B)) } catch { j[l]["z_" + B.slice(7)] = A.getItem(B) } })); r.referrerPolicy = "origin"; r.src = "/cdn-cgi/zaraz/s.js?z=" + btoa(encodeURIComponent(JSON.stringify(j[l]))); q.parentNode.insertBefore(r, q) };["complete", "interactive"].includes(k.readyState) ? zaraz.init() : j.addEventListener("DOMContentLoaded", zaraz.init) }(w, d, "zarazData", "script"); })(window, document);</script>
+</head>
+<body class="hold-transition sidebar-mini">
+    <div class="wrapper">
+
+
+
+
+        <div>
+
+
+            <section class="content">
+                <div class="container-fluid">
+
+                    <div class="card card-default">
+
+
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <form asp-action="Create">
+                                        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                                        <div class="form-group">
+                                            <label>Tarih:</label>
+                                            <div class="input-group date" id="reservationdate" data-target-input="nearest">
+                                                <input type="date" class="form-control datetimepicker-input" data-target="#reservationdate" />
+                                                <div class="input-group-append" data-target="#reservationdate" data-toggle="datetimepicker">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <br />
+                                        <div class="form-group">
+                                            <label>Tedarikçi</label>
+                                            
+                                            @*<label asp-for="WholesalerId" class="control-label"></label>
+                                            @Html.DropDownListFor(x=>x.WholesalerId, (IEnumerable<SelectListItem>)ViewBag.Payments,new{@class="form-control"})
+                                            <span asp-validation-for="WholesalerId" class="text-danger"></span>*@
+                                             <div class="form-group">
+                                                <label asp-for="WholesalerId" class="control-label"></label>
+                                                @Html.DropDownListFor(x=>x.WholesalerId, (IEnumerable<SelectListItem>)ViewBag.Wholesalers,new{@class="form-control"})
+                                                <span asp-validation-for="WholesalerId" class="text-danger"></span>
+                                            </div>
+                                        </div>
+                                        <br />
+                                        <div class="form-group">
+                                            <label class="form-label">Ödenen Tutar</label>
+
+                                            <div class="input-group mb-3">
+                                                <input type="number" min="0" class="form-control">
+                                                <div class="input-group-append">
+                                                    <span class="input-group-text">TL</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label>Ödeme Şekli</label>
+                                            <div class="form-group clearfix">
+                                                <div class="icheck-success d-inline">
+                                                    <input type="radio" name="r3" checked id="radioSuccess1">
+                                                    <label for="radioSuccess1">
+                                                        Nakit
+                                                    </label>
+                                                </div><br />
+                                                <div class="icheck-success d-inline">
+                                                    <input type="radio" name="r3" id="radioSuccess2">
+                                                    <label for="radioSuccess2">
+                                                        Kredi Kartı
+                                                    </label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="card-footer">
+                                            <button type="submit" class="btn btn-primary">Submit</button>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </section>
+        </div>
+
+
+    </div>
+
+
+
+
+    <script src="~admin/plugins/jquery/jquery.min.js"></script>
+
+    <script src="~admin/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+    <script src="~admin/plugins/select2/js/select2.full.min.js"></script>
+
+    <script src="~admin/plugins/bootstrap4-duallistbox/jquery.bootstrap-duallistbox.min.js"></script>
+
+    <script src="~admin/plugins/moment/moment.min.js"></script>
+    <script src="~admin/plugins/inputmask/jquery.inputmask.min.js"></script>
+
+    <script src="~admin/plugins/daterangepicker/daterangepicker.js"></script>
+
+    <script src="~admin/plugins/bootstrap-colorpicker/js/bootstrap-colorpicker.min.js"></script>
+
+    <script src="~admin/plugins/tempusdominus-bootstrap-4/js/tempusdominus-bootstrap-4.min.js"></script>
+
+    <script src="~admin/plugins/bootstrap-switch/js/bootstrap-switch.min.js"></script>
+
+    <script src="~admin/plugins/bs-stepper/js/bs-stepper.min.js"></script>
+
+    <script src="~admin/plugins/dropzone/min/dropzone.min.js"></script>
+
+    <script src="~admin/dist/js/adminlte.min.js?v=3.2.0"></script>
+
+    <script src="~admin/dist/js/demo.js"></script>
+
+    <script>
+        $(function () {
+            //Initialize Select2 Elements
+            $('.select2').select2()
+
+            //Initialize Select2 Elements
+            $('.select2bs4').select2({
+                theme: 'bootstrap4'
+            })
+
+            //Datemask dd/mm/yyyy
+            $('#datemask').inputmask('dd/mm/yyyy', { 'placeholder': 'dd/mm/yyyy' })
+            //Datemask2 mm/dd/yyyy
+            $('#datemask2').inputmask('mm/dd/yyyy', { 'placeholder': 'mm/dd/yyyy' })
+            //Money Euro
+            $('[data-mask]').inputmask()
+
+            //Date picker
+            $('#reservationdate').datetimepicker({
+                format: 'L'
+            });
+
+            //Date and time picker
+            $('#reservationdatetime').datetimepicker({ icons: { time: 'far fa-clock' } });
+
+            //Date range picker
+            $('#reservation').daterangepicker()
+            //Date range picker with time picker
+            $('#reservationtime').daterangepicker({
+                timePicker: true,
+                timePickerIncrement: 30,
+                locale: {
+                    format: 'MM/DD/YYYY hh:mm A'
+                }
+            })
+            //Date range as a button
+            $('#daterange-btn').daterangepicker(
+                {
+                    ranges: {
+                        'Today': [moment(), moment()],
+                        'Yesterday': [moment().subtract(1, 'days'), moment().subtract(1, 'days')],
+                        'Last 7 Days': [moment().subtract(6, 'days'), moment()],
+                        'Last 30 Days': [moment().subtract(29, 'days'), moment()],
+                        'This Month': [moment().startOf('month'), moment().endOf('month')],
+                        'Last Month': [moment().subtract(1, 'month').startOf('month'), moment().subtract(1, 'month').endOf('month')]
+                    },
+                    startDate: moment().subtract(29, 'days'),
+                    endDate: moment()
+                },
+                function (start, end) {
+                    $('#reportrange span').html(start.format('MMMM D, YYYY') + ' - ' + end.format('MMMM D, YYYY'))
+                }
+            )
+
+            //Timepicker
+            $('#timepicker').datetimepicker({
+                format: 'LT'
+            })
+
+            //Bootstrap Duallistbox
+            $('.duallistbox').bootstrapDualListbox()
+
+            //Colorpicker
+            $('.my-colorpicker1').colorpicker()
+            //color picker with addon
+            $('.my-colorpicker2').colorpicker()
+
+            $('.my-colorpicker2').on('colorpickerChange', function (event) {
+                $('.my-colorpicker2 .fa-square').css('color', event.color.toString());
+            })
+
+            $("input[data-bootstrap-switch]").each(function () {
+                $(this).bootstrapSwitch('state', $(this).prop('checked'));
+            })
+
+        })
+        // BS-Stepper Init
+        document.addEventListener('DOMContentLoaded', function () {
+            window.stepper = new Stepper(document.querySelector('.bs-stepper'))
+        })
+
+        // DropzoneJS Demo Code Start
+        Dropzone.autoDiscover = false
+
+        // Get the template HTML and remove it from the doumenthe template HTML and remove it from the doument
+        var previewNode = document.querySelector("#template")
+        previewNode.id = ""
+        var previewTemplate = previewNode.parentNode.innerHTML
+        previewNode.parentNode.removeChild(previewNode)
+
+        var myDropzone = new Dropzone(document.body, { // Make the whole body a dropzone
+            url: "/target-url", // Set the url
+            thumbnailWidth: 80,
+            thumbnailHeight: 80,
+            parallelUploads: 20,
+            previewTemplate: previewTemplate,
+            autoQueue: false, // Make sure the files aren't queued until manually added
+            previewsContainer: "#previews", // Define the container to display the previews
+            clickable: ".fileinput-button" // Define the element that should be used as click trigger to select files.
+        })
+
+        myDropzone.on("addedfile", function (file) {
+            // Hookup the start button
+            file.previewElement.querySelector(".start").onclick = function () { myDropzone.enqueueFile(file) }
+        })
+
+        // Update the total progress bar
+        myDropzone.on("totaluploadprogress", function (progress) {
+            document.querySelector("#total-progress .progress-bar").style.width = progress + "%"
+        })
+
+        myDropzone.on("sending", function (file) {
+            // Show the total progress bar when upload starts
+            document.querySelector("#total-progress").style.opacity = "1"
+            // And disable the start button
+            file.previewElement.querySelector(".start").setAttribute("disabled", "disabled")
+        })
+
+        // Hide the total progress bar when nothing's uploading anymore
+        myDropzone.on("queuecomplete", function (progress) {
+            document.querySelector("#total-progress").style.opacity = "0"
+        })
+
+        // Setup the buttons for all transfers
+        // The "add files" button doesn't need to be setup because the config
+        // `clickable` has already been specified.
+        document.querySelector("#actions .start").onclick = function () {
+            myDropzone.enqueueFiles(myDropzone.getFilesWithStatus(Dropzone.ADDED))
+        }
+        document.querySelector("#actions .cancel").onclick = function () {
+            myDropzone.removeAllFiles(true)
+        }
+                                                  // DropzoneJS Demo Code End
+    </script>
+</body>
+</html>

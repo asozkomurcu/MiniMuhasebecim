@@ -1,0 +1,80 @@
+﻿@model IEnumerable<OrderDto>
+
+
+<style>
+    #orderList {
+        display: block;
+        width: 45%;
+        height: auto;
+        margin: 0 auto;
+    }
+
+
+    @@media only screen and (min-width:992px)) {
+        #orderList {
+            margin-left: 35%;
+            margin-right: 20%;
+        }
+    }
+
+    @@media only screen and (min-width:741px) and (max-width:991px) {
+        #orderList {
+            margin-left: 20%;
+        }
+    }
+
+    @@media only screen and (min-width:525px) and (max-width:740px) {
+        #orderList {
+            width: 60%;
+            margin-left: 20%;
+            margin-right: 20%;
+        }
+    }
+
+    @@media only screen and (max-width:524px) {
+        #orderList {
+            width: 70%;
+            margin-left: 15%;
+            margin-right: 15%;
+        }
+    }
+
+</style>
+
+<div id="orderList">
+    <table class="table">
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.Id)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.WholesalerId)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.OrderPrice)
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Id)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.WholesalerId)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.OrderPrice)
+                    </td>
+                    <td>
+                        @Html.ActionLink("Güncelle", "Edit","Debt", new { Area="User", id=item.Id }, new{@class="btn btn-success"})
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

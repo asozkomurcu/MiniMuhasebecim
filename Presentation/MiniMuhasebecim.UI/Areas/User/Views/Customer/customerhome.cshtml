@@ -1,0 +1,85 @@
+﻿@model IEnumerable<CustomerDto>
+
+<style>
+    #KullaniciBilgileri {
+        display: block;
+        width: 45%;
+        height: auto;
+        margin: 0 auto;
+    }
+
+
+    @@media only screen and (min-width:992px)) {
+        #KullaniciBilgileri {
+            margin-left: 35%;
+            margin-right: 20%;
+        }
+    }
+
+    @@media only screen and (min-width:741px) and (max-width:991px) {
+        #KullaniciBilgileri {
+            width: 50%;
+            margin-left: 30%;
+            margin-right: 20%;
+        }
+    }
+
+    @@media only screen and (min-width:525px) and (max-width:740px) {
+        #KullaniciBilgileri {
+            width: 60%;
+            margin-left: 20%;
+            margin-right: 20%;
+        }
+    }
+
+    @@media only screen and (max-width:524px) {
+        #KullaniciBilgileri {
+            width: 70%;
+            margin-left: 15%;
+            margin-right: 15%;
+        }
+    }
+
+</style>
+
+<div class="col-md-3;" id="KullaniciBilgileri">
+    <table class="table">
+    @*@foreach (var item in Model)*@
+    
+        <div class="card card-primary card-outline">
+            <div class="card-body box-profile">
+                <div class="text-center">
+                    <img class="profile-user-img img-fluid img-circle" src="../../dist/img/user4-128x128.jpg" alt="User profile picture">
+                </div>
+                <h4 class="profile-username text-center">Adı @*@Html.DisplayFor(modelItem => item.Name)*@</h4>
+                <h3 class="text-muted text-center">Soyadı@*@Html.DisplayFor(modelItem => item.Surname)*@</h3>
+                <ul class="list-group list-group-unbordered mb-3">
+                    <li class="list-group-item">
+                        <b>Kullanıcı Adı</b> <a class="float-right">Kullanıcı Adı@*@Html.DisplayFor(modelItem => item.Account.Username)*@</a>
+                    </li>
+                    <li class="list-group-item">
+                        <b>E-Posta Adresi</b> <a class="float-right">E-Mail@*@Html.DisplayFor(modelItem => item.Email)*@</a>
+                    </li>
+                    <li class="list-group-item">
+                        <b>Telefon Numarası</b> <a class="float-right">Telefon@*@Html.DisplayFor(modelItem => item.Phone)*@</a>
+                    </li>
+                    <li class="list-group-item">
+                        <b>Doğum Tarihi</b> <a class="float-right">DoğumTarihi@*@Html.DisplayFor(modelItem => item.Birtdate)*@</a>
+                    </li>
+                    <li class="list-group-item">
+                        <b>Cinsiyeti</b> <a class="float-right">Cinsiyet@*@Html.DisplayFor(modelItem => item.Gender)*@</a>
+                    </li>
+                    <li class="list-group-item">
+                        <b>Kullanıcı Rolü</b> <a class="float-right">Rolü@*@Html.DisplayFor(modelItem => item.Account.Role)*@</a>
+                    </li>
+                </ul>
+                <a href="/user/customerimage/list" class="btn btn-primary btn-block"><b>Resimlerim</b></a>
+            </div>
+
+        </div>
+        
+    </table>
+
+       
+        
+    </div>

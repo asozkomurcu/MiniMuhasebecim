@@ -1,0 +1,7 @@
+﻿namespace MiniMuhasebecim.Application.Services.Abstraction
+{
+    public interface IMailService
+    {
+        Task SendMessageAsync(string to, string subject, string body, bool isBodyHtml = true);
+    }
+}

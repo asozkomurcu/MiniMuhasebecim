@@ -1,0 +1,94 @@
+﻿@model IEnumerable<IncomeDto>
+
+
+<style>
+    #incomeList {
+        display: block;
+        width: 45%;
+        height: auto;
+        margin: 0 auto;
+    }
+
+
+    @@media only screen and (min-width:992px)) {
+        #incomeList {
+            margin-left: 35%;
+            margin-right: 20%;
+        }
+    }
+
+    @@media only screen and (min-width:741px) and (max-width:991px) {
+        #incomeList {
+            width: 50%;
+            margin-left: 30%;
+            margin-right: 20%;
+        }
+    }
+
+    @@media only screen and (min-width:525px) and (max-width:740px) {
+        #incomeList {
+            width: 60%;
+            margin-left: 20%;
+            margin-right: 20%;
+        }
+    }
+
+    @@media only screen and (max-width:524px) {
+        #incomeList {
+            width: 70%;
+            margin-left: 15%;
+            margin-right: 15%;
+        }
+    }
+
+</style>
+
+<div id="incomeList">
+    <table class="table">
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.Id)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Date)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Cash)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.CreditCard1)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.CreditCard2)
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Id)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Date)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Cash)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.CreditCard1)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.CreditCard2)
+                    </td>
+                    <td>
+                        @Html.ActionLink("Güncelle", "Edit","Income", new { Area="User", id=item.Id }, new{@class="btn btn-success"})
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

@@ -1,0 +1,113 @@
+﻿@{
+    Layout = null;
+}
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Mini Muhasebem | Yönetici Yönlendirme</title>
+
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&amp;display=fallback">
+
+    <link rel="stylesheet" href="~/admin/plugins/fontawesome-free/css/all.min.css">
+
+    <link rel="stylesheet" href="~/admin/dist/css/adminlte.min.css?v=3.2.0">
+
+    <link rel="stylesheet" href="~/admin/plugins/overlayScrollbars/css/OverlayScrollbars.min.css">
+
+    <style>
+        #Kullanicipaneli, #Yonetimpaneli {
+            display: block;
+            width: auto;
+            height: auto;
+            margin: 0 auto;
+            margin-top: 18%;
+            text-align: left;
+        }
+
+        #Yonetimpaneli2 {
+            width: auto;
+            height: auto;
+            margin: 0 auto;
+            margin-top: 18%;
+            margin-bottom: auto;
+        }
+
+        @@media only screen and (min-width:992px)) { /* L */
+            #Yonetimpaneli {
+                margin-left: 5px;
+                margin-right: 10%;
+            }
+        }
+
+        @@media only screen and (min-width:992px) { /* L */
+            #Kullanicipaneli {
+                margin-left: 11%;
+                margin-right: 5px;
+            }
+        }
+
+        @@media only screen and (min-width:575px) and (max-width:991px) { /* M */
+            #Yonetimpaneli {
+                margin-left: 24%;
+                margin-right: 24%;
+                margin-top: 20px;
+            }
+        }
+
+        @@media only screen  and (max-width:991px) { /* M */
+            #Kullanicipaneli {
+                margin-left: 24%;
+                margin-right: 24%;
+                margin-top: 150px;
+            }
+        }
+
+        @@media only screen and (max-width:574px) { /* M */
+            #Yonetimpaneli {
+                margin-left: 24%;
+                margin-right: 24%;
+                margin-top: 15px;
+            }
+        }
+
+    </style>
+</head>
+<body style="overflow:hidden">
+    <div class="row">
+        <div class="col-lg-4 col-6" id="Kullanicipaneli">
+            <a href="/user/Home/Index">
+                <div class="small-box bg-success">
+                    <div class="inner">
+                        <h3>Kullanıcı</h3>
+                        <h5>Paneli</h5>
+                    </div>
+                    <div class="icon">
+                        <i class='fas fa-edit' style='font-size:68px;'></i>
+                    </div>
+                    <div class="small-box-footer">
+                        <i class="fas fa-arrow-circle-left"></i>
+                    </div>
+                </div>
+            </a>
+        </div>
+
+        <div class="col-lg-4 col-6" id="Yonetimpaneli">
+            <a href="/admin/Home/Index">
+                <div class="small-box bg-danger">
+                    <div class="inner">
+                        <h3>Yönetici</h3>
+                        <h5>Paneli</h5>
+                    </div>
+                    <div class="icon">
+                        <i class="fas fa-chart-pie"></i>
+                    </div>
+                    <div class="small-box-footer">
+                        <i class="fas fa-arrow-circle-right"></i>
+                    </div>
+                </div>
+            </a>
+        </div>
+
+    </div>
+</body>

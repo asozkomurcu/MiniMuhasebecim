@@ -1,0 +1,150 @@
+﻿@model RegisterVM
+
+@{
+    Layout = null;
+}
+
+
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title> | Kullanıcı Paneli</title>
+
+    <!-- Google Font: Source Sans Pro -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="~/admin/plugins/fontawesome-free/css/all.min.css">
+    <!-- icheck bootstrap -->
+    <link rel="stylesheet" href="~/admin/plugins/icheck-bootstrap/icheck-bootstrap.min.css">
+    <!-- Theme style -->
+    <link rel="stylesheet" href="~/admin/dist/css/adminlte.min.css">
+</head>
+<body class="hold-transition register-page">
+    <div class="register-box">
+        <div class="card card-outline card-primary">
+            <div class="card-header text-center">
+                <p class="h1"><b>MİNİ</b>MUHASEBEM</p>
+            </div>
+            <div class="card-body">
+                <p class="login-box-msg">Yeni üyelik oluştur</p>
+                <form asp-action="Login" asp-area="Entry" asp-controller="Register" method="post">
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    <div class="input-group mb-3">
+                        <input type="text" asp-for="Name" class="form-control" placeholder="Adınız">
+                        <div class="input-group-append">
+                            <div class="input-group-text">
+                                <span class="fas fa-user"></span>
+                            </div>
+                        </div>
+                    </div>
+                    <span asp-validation-for="Name" class="text-danger"></span>
+                    <div class="input-group mb-3">
+                        <input type="text" asp-for="Surname" class="form-control" placeholder="Soyadınız">
+                        <div class="input-group-append">
+                            <div class="input-group-text">
+                                <span class="fas fa-user"></span>
+                            </div>
+                        </div>
+                    </div>
+                    <span asp-validation-for="Surname" class="text-danger"></span>
+                    <div class="input-group mb-3">
+                        <input type="email" asp-for="Email" class="form-control" placeholder="Email">
+                        <div class="input-group-append">
+                            <div class="input-group-text">
+                                <span class="fas fa-envelope"></span>
+                            </div>
+                        </div>
+                    </div>
+                    <span asp-validation-for="Email" class="text-danger"></span>
+                    <div class="input-group mb-3">
+                        <input type="tel" asp-for="Phone" class="form-control" placeholder="Telefon 123-123-1234" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" required>
+                        <div class="input-group-append">
+                            <div class="input-group-text">
+                                <span class="fas fa-phone"></span>
+                            </div>
+                        </div>
+                    </div>
+                    <span asp-validation-for="Phone" class="text-danger"></span>
+                    <div class="input-group mb-3">
+                        <input type="date" asp-for="Birtdate" class="form-control" placeholder="Doğum Tarihi">
+                        <div class="input-group-append">
+                            <div class="input-group-text">
+                                <span class="fas fa-birthday-cake"></span>
+                            </div>
+                        </div>
+                    </div>
+                    <span asp-validation-for="Birtdate" class="text-danger"></span>
+                    <div class="input-group mb-3">
+                        <input type="text" asp-for="Gender" class="form-control" placeholder="Cinsiyetiniz(Male/Female)">
+                        <div class="input-group-append">
+                            <div class="input-group-text">
+                                <span class="fa fa-venus-mars"></span>
+                            </div>
+                        </div>
+                    </div>
+                    <span asp-validation-for="Gender" class="text-danger"></span>
+                    <div class="input-group mb-3">
+                        <input type="text" asp-for="UserName" class="form-control" placeholder="Kullanıcı Adı">
+                        <div class="input-group-append">
+                            <div class="input-group-text">
+                                <span class="fas fa-user"></span>
+                            </div>
+                        </div>
+                    </div>
+                    <span asp-validation-for="UserName" class="text-danger"></span>
+                    <div class="input-group mb-3">
+                        <input type="password" asp-for="Password" class="form-control" placeholder="Şifre">
+                        <div class="input-group-append">
+                            <div class="input-group-text">
+                                <span class="fas fa-lock"></span>
+                            </div>
+                        </div>
+                    </div>
+                    <span asp-validation-for="Password" class="text-danger"></span>
+                    <div class="input-group mb-3">
+                        <input type="password" asp-for="PasswordAgain" class="form-control" placeholder="Şifre Tekrar">
+                        <div class="input-group-append">
+                            <div class="input-group-text">
+                                <span class="fas fa-lock"></span>
+                            </div>
+                        </div>
+                    </div>
+                    <span asp-validation-for="PasswordAgain" class="text-danger"></span>
+                    <div>
+                        <div>
+                            <div class="icheck-primary">
+                                <input type="checkbox" id="agreeTerms" name="terms" value="agree" required>
+                                <label for="agreeTerms" >
+                                    <a href="#" >Üyelik Sözleşmesini</a> Kabul Ediyorum
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="social-auth-links text-center">
+                        <button type="submit" class="btn btn-block btn-primary">
+                            Kayıt Ol
+                        </button>
+                    </div>
+                </form>
+                <div class="social-auth-links text-center">
+                    <a href="#" class="btn btn-block btn-danger">
+                        <i class="fab fa-google-plus mr-2"></i>
+                        Google+ ile kaydolun
+                    </a>
+                </div>
+                <a href="@Url.Action("Signin","Login")" class="text-center">Zaten bir üyeliğim var</a>
+            </div>
+
+        </div>
+    </div>
+
+
+    <script src="~admin/plugins/jquery/jquery.min.js"></script>
+
+    <script src="~admin/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+    <script src="~admin/dist/js/adminlte.min.js?v=3.2.0"></script>
+</body>
+</html>
